@@ -174,7 +174,7 @@ paths:
               type: "string"
             Access-Control-Allow-Origin:
               type: "string"
-  /project/{projectId}:
+  /projects/{projectId}:
     parameters:
       - in: path
         name: projectId
