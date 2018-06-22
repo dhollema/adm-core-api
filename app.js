@@ -9,15 +9,15 @@ app.post('/projects', function(req, res) {
   res.send({"message":"added new project"});
 });
 
-app.get('/project/{projectId}', function(req, res) {
+app.get('/projects/{projectId}', function(req, res) {
   res.send({"message":"retrieved project"});
 });
 
-app.put('/project/{projectId}', function(req, res) {
+app.put('/projects/{projectId}', function(req, res) {
   res.send({"message":"updated project"});
 });
 
-app.delete('/project/{projectId}', function(req, res) {
+app.delete('/projects/{projectId}', function(req, res) {
   res.send({"message":"deleted project"});
 });
 
