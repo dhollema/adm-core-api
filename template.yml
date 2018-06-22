@@ -19,7 +19,11 @@ Parameters:
 #       Type: Canary10Percent5Minutes
 
 Resources:
-  HelloWorld:
+  ADMCoreAPI:
+    Type: AWS::Serverless::API
+    StageName: prod
+    DefinitionUri: yaml-resolved/swagger.yml
+  ADMCoreAPIFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
@@ -31,13 +35,13 @@ Resources:
         Fn::ImportValue:
           !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
       Events:
-        GetEvent:
+        GetProjects:
           Type: Api
           Properties:
-            Path: /
+            Path: /projects
             Method: get
-        PostEvent:
+        PostProject:
           Type: Api
           Properties:
-            Path: /
+            Path: /project
             Method: post

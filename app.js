@@ -1,18 +1,17 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(req, res) {
+app.get('/projects', function(req, res) {
   res.send({
-    "Output": "Hello World!"
+    "got all projects"
   });
 });
 
-app.post('/', function(req, res) {
+app.post('/projects', function(req, res) {
   res.send({
-    "Output": "Hello World!"
+    "added new project"
   });
 });
-
 
 // Export your Express configuration so that it can be consumed by the Lambda handler
 module.exports = app
