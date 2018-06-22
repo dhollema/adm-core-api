@@ -51,11 +51,11 @@ Resources:
           Properties:
             Path: /project/{projectId}
             Method: get
-        UpdateProject:
+        PutProject:
           Type: Api
           Properties:
             Path: /project/{projectId}
-            Method: update
+            Method: put
         DeleteProject:
           Type: Api
           Properties:

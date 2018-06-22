@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/projects', function(req, res) {
-  res.send({"message":"got all projects"});
+  res.send({"message":"retrieved all projects"});
 });
 
 app.post('/projects', function(req, res) {
@@ -10,7 +10,7 @@ app.post('/projects', function(req, res) {
 });
 
 app.get('/project/{projectId}', function(req, res) {
-  res.send({"message":"got project"});
+  res.send({"message":"retrieved project"});
 });
 
 app.put('/project/{projectId}', function(req, res) {
