@@ -19,11 +19,11 @@ Parameters:
 #       Type: Canary10Percent5Minutes
 
 Resources:
-  ADMCoreAPI:
-    Type: AWS::Serverless::API
+  ADMCoreApi:
+    Type: AWS::Serverless::Api
     StageName: prod
     DefinitionUri: yaml-resolved/swagger.yml
-  ADMCoreAPIFunction:
+  ADMCoreApiFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
