@@ -1,0 +1,351 @@
+---
+swagger: "2.0"
+info:
+  description: Project RED ADM Core API
+  version: 1.0.0
+  title: ADM Core API
+  contact:
+    email: david.hollema@edf-re.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: virtserver.swaggerhub.com
+basePath: /dhollema/adm-core-api/1.0.0
+schemes:
+- https
+paths:
+  /projects:
+    get:
+      tags:
+      - Projects
+      summary: Gets all projects.
+      operationId: getProjects
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+    post:
+      tags:
+      - Projects
+      summary: Adds a new project.
+      operationId: addProject
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: project
+        description: The project to create.
+        required: false
+        schema:
+          $ref: '#/definitions/Project'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+        400:
+          description: Bad Request Body
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+    options:
+      tags:
+      - CORS
+      summary: CORS support
+      description: |
+        Enable CORS by returning correct headers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: Default response for CORS method
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+      x-amazon-apigateway-integration:
+        type: mock
+        requestTemplates:
+          application/json: |
+            {
+              "statusCode" : 200
+            }
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+              method.response.header.Access-Control-Allow-Methods: '''*'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+            responseTemplates:
+              application/json: |
+                {}
+  /project/{projectId}:
+    get:
+      tags:
+      - Projects
+      summary: Gets a project.
+      operationId: getProject
+      produces:
+      - application/json
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of the project to get.
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+    put:
+      tags:
+      - Projects
+      summary: Updates a project.
+      operationId: updateProject
+      produces:
+      - application/json
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of the project to get.
+        required: true
+        type: string
+        format: uuid
+      - in: body
+        name: project
+        description: The project to update.
+        required: false
+        schema:
+          $ref: '#/definitions/Project'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+    delete:
+      tags:
+      - Projects
+      summary: Deletes a project.
+      operationId: deleteProject
+      produces:
+      - application/json
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of the project to get.
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+    options:
+      tags:
+      - CORS
+      summary: CORS support
+      description: |
+        Enable CORS by returning correct headers
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: projectId
+        in: path
+        description: ID of the project to get.
+        required: true
+        type: string
+        format: uuid
+      responses:
+        200:
+          description: Default response for CORS method
+          headers:
+            Access-Control-Allow-Headers:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Origin:
+              type: string
+      x-amazon-apigateway-integration:
+        type: mock
+        requestTemplates:
+          application/json: |
+            {
+              "statusCode" : 200
+            }
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Headers: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key'''
+              method.response.header.Access-Control-Allow-Methods: '''*'''
+              method.response.header.Access-Control-Allow-Origin: '''*'''
+            responseTemplates:
+              application/json: |
+                {}
+definitions:
+  Point:
+    type: object
+    required:
+    - coordinates
+    - type
+    properties:
+      type:
+        type: string
+        example: Point
+      coordinates:
+        type: array
+        example:
+        - 126.1
+        - 53.47
+        items:
+          type: number
+        maxItems: 2
+        minItems: 2
+    example:
+      coordinates:
+      - 126.1
+      - 53.47
+      type: Point
+  Project:
+    type: object
+    required:
+    - geometry
+    - id
+    - name
+    - status
+    - type
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      name:
+        type: string
+        example: Milo
+      type:
+        type: string
+        enum:
+        - Wind - Onshore
+        - Wind - Offshore
+        - Solar
+        - Storage
+        - Bioenergy - Biogas
+        - Bioenergy - Biomass
+        - Hybrid
+      status:
+        type: string
+        enum:
+        - Development - Feasibility
+        - Development - Mid Stage
+        - Development - Advanced Stage
+        - Implementation
+        - Operational - Generation
+        - Operational - 3rd Party O&M
+        - Decommissioned
+        - Inactive
+      geometry:
+        $ref: '#/definitions/Point'
+    example:
+      name: Milo
+      geometry:
+        coordinates:
+        - 126.1
+        - 53.47
+        type: Point
+      id: d290f1ee-6c54-4b01-90e6-d701748f0851
+      type: Wind - Onshore
+      status: Development - Feasibility
+x-aws-api-id: yccx5qmo01
