@@ -67,7 +67,6 @@ definitions:
           - Inactive
       geometry:
         $ref: '#/definitions/Point'
-# basePath: /adm-core-api/1.0.0
 schemes:
  - https
 paths:
@@ -337,3 +336,4 @@ paths:
 host: virtserver.swaggerhub.com
 basePath: /dhollema/adm-core-api/1.0.0
 x-aws-api-id: 'yccx5qmo01'
+# basePath: /adm-core-api/1.0.0
