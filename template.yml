@@ -42,27 +42,27 @@ Resources:
             Path: /projects
             Method: get
             RestApiId: !Ref ADMCoreApi
-        PostProject:
-          Type: Api
-          Properties:
-            Path: /projects
-            Method: post
-            RestApiId: !Ref ADMCoreApi
-        GetProject:
-          Type: Api
-          Properties:
-            Path: /projects/{projectId}
-            Method: get
-            RestApiId: !Ref ADMCoreApi
-        PutProject:
-          Type: Api
-          Properties:
-            Path: /projects/{projectId}
-            Method: put
-            RestApiId: !Ref ADMCoreApi
-        DeleteProject:
-          Type: Api
-          Properties:
-            Path: /projects/{projectId}
-            Method: delete
-            RestApiId: !Ref ADMCoreApi
+#        PostProject:
+#          Type: Api
+#          Properties:
+#            Path: /projects
+#            Method: post
+#            RestApiId: !Ref ADMCoreApi
+#        GetProject:
+#          Type: Api
+#          Properties:
+#            Path: /projects/{projectId}
+#            Method: get
+#            RestApiId: !Ref ADMCoreApi
+#        PutProject:
+#          Type: Api
+#          Properties:
+#            Path: /projects/{projectId}
+#            Method: put
+#            RestApiId: !Ref ADMCoreApi
+#        DeleteProject:
+#          Type: Api
+#          Properties:
+#            Path: /projects/{projectId}
+#            Method: delete
+#            RestApiId: !Ref ADMCoreApi
