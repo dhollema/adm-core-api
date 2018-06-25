@@ -31,7 +31,6 @@ definitions:
   Project:
     type: object
     required:
-    - id
     - name
     - type
     - status
@@ -67,7 +66,6 @@ definitions:
           - Inactive
       geometry:
         $ref: '#/definitions/Point'
-# basePath: /adm-core-api/1.0.0
 schemes:
  - https
 paths:
@@ -77,6 +75,8 @@ paths:
       operationId: getProjects
       tags:
       - Projects
+      consumes: 
+      - application/json
       produces:
       - application/json
       responses:
@@ -112,6 +112,8 @@ paths:
       operationId: addProject
       tags:
       - Projects
+      consumes: 
+      - application/json
       produces:
       - application/json
       parameters:
@@ -229,6 +231,8 @@ paths:
       operationId: updateProject
       tags:
       - Projects
+      consumes: 
+      - application/json
       produces:
       - application/json
       parameters:
@@ -337,3 +341,4 @@ paths:
 host: virtserver.swaggerhub.com
 basePath: /dhollema/adm-core-api/1.0.0
 x-aws-api-id: 'yccx5qmo01'
+# basePath: /adm-core-api/1.0.0
