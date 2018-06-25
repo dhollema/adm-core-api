@@ -109,12 +109,7 @@ paths:
           default:
             statusCode: 200
         uri: 
-          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:adm-core-api-fn/invocations"
-#      x-amazon-apigateway-integration:
-#        httpMethod: post
-#        type: aws_proxy
-#        uri: 
-#        responses: {}
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ADMCoreApiFunction}/invocations"
 #    post:
 #      summary: Adds a new project.
 #      operationId: addProject
