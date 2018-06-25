@@ -76,7 +76,7 @@ paths:
       tags:
       - Projects
       consumes: 
-        - application/json
+      - application/json
       produces:
       - application/json
       responses:
