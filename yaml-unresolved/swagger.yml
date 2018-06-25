@@ -112,6 +112,8 @@ paths:
       operationId: addProject
       tags:
       - Projects
+      consumes: 
+      - application/json
       produces:
       - application/json
       parameters:
@@ -229,6 +231,8 @@ paths:
       operationId: updateProject
       tags:
       - Projects
+      consumes: 
+      - application/json
       produces:
       - application/json
       parameters:
