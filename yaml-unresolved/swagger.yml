@@ -104,7 +104,7 @@ paths:
 #              type: "string"
     x-amazon-apigateway-integration:
       httpMethod: post
-      type: aws
+      type: aws_proxy
       responses:
         default:
           statusCode: 200
