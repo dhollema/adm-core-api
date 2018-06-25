@@ -109,7 +109,7 @@ paths:
         default:
           statusCode: 200
       uri: 
-        Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/adm-core-api-fn/invocations"
+        Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/awscodestar-adm-core-api-lambda-ADMCoreApiFunction-Y93HP47X64I2/invocations"
 #      x-amazon-apigateway-integration:
 #        httpMethod: post
 #        type: aws_proxy
