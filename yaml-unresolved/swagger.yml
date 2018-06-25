@@ -76,9 +76,9 @@ paths:
       tags:
       - Projects
       consumes: 
-        - application/json
+      - application/json
       produces:
-        - application/json; version=1.0.0
+      - application/json; version
       responses:
         200:
           description: OK
