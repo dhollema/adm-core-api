@@ -22,7 +22,7 @@ Resources:
   ADMCoreApi:
     Type: AWS::Serverless::Api
     Properties:
-      StageName: prod
+      StageName: Prod
       DefinitionUri: yaml-unresolved/swagger.yml
   ADMCoreApiFunction:
     Type: AWS::Serverless::Function
