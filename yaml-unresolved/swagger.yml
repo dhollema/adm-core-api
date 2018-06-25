@@ -102,17 +102,14 @@ paths:
 #              type: "string"
 #            Access-Control-Allow-Origin:
 #              type: "string"
-       x-amazon-apigateway-integration:
-         responses:
-           default:
-             statusCode: 200
-         uri: 
-           Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/adm-core-api-fn/invocations"
-#      x-amazon-apigateway-integration:
-#        httpMethod: post
-#        type: aws_proxy
-#        uri: 
-#        responses: {}
+      x-amazon-apigateway-integration:
+        httpMethod: post
+        type: aws
+        responses:
+          default:
+            statusCode: 200
+      uri: 
+        Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/adm-core-api-fn/invocations"
 #    post:
 #      summary: Adds a new project.
 #      operationId: addProject
