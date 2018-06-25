@@ -68,6 +68,7 @@ definitions:
         $ref: '#/definitions/Point'
 schemes:
  - https
+ - http
 paths:
   /projects:
     get:
