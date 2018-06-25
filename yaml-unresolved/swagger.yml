@@ -94,11 +94,6 @@ paths:
           headers:
             Access-Control-Allow-Origin:
               type: "string"
-        500:
-          description: Internal Server Error
-          headers:
-            Access-Control-Allow-Origin:
-              type: "string"
       x-amazon-apigateway-integration:
         httpMethod: post
         type: aws_proxy
@@ -111,46 +106,46 @@ paths:
             statusCode: 400
             responseParameters:
               method.response.header.Access-Control-Allow-Origin : "'*'"
-          "INT.*":
-            statusCode: 500
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
+    post:
+      summary: Adds a new project.
+      operationId: addProject
+      tags:
+      - Projects
+      produces:
+      - application/json
+      parameters:
+        - in: body
+          name: project
+          description: The project to create.
+          schema:
+            $ref: '#/definitions/Project'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: Bad Request Body
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        httpMethod: post
+        type: aws_proxy
+        responses:
+          default:
+            statusCode: 201
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+          "BAD.*":
+            statusCode: 400
             responseParameters:
               method.response.header.Access-Control-Allow-Origin : "'*'"
         uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
-#    post:
-#      summary: Adds a new project.
-#      operationId: addProject
-#      tags:
-#      - Projects
-#      produces:
-#      - application/json
-#      parameters:
-#        - in: body
-#          name: project
-#          description: The project to create.
-#          schema:
-#            $ref: '#/definitions/Project'
-#          
-#      responses:
-#        201:
-#          description: Created
-#          schema:
-#            $ref: '#/definitions/Project'
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
-#        400:
-#          description: Bad Request Body
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
     options:
       summary: CORS support
       description: |
