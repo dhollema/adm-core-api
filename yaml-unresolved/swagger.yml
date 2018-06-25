@@ -198,6 +198,8 @@ paths:
       operationId: getProject
       tags:
       - Projects
+      consumes:
+      - application/json
       produces:
       - application/json
       responses:
@@ -272,6 +274,8 @@ paths:
       operationId: deleteProject
       tags:
       - Projects
+      consumes: 
+      - application/json
       produces:
       - application/json
       responses:
