@@ -43,12 +43,12 @@ Resources:
             Path: /projects
             Method: get
             RestApiId: !Ref ADMCoreApi
-#        PostProject:
-#          Type: Api
-#          Properties:
-#            Path: /projects
-#            Method: post
-#            RestApiId: !Ref ADMCoreApi
+        PostProject:
+          Type: Api
+          Properties:
+            Path: /projects
+            Method: post
+            RestApiId: !Ref ADMCoreApi
 #        GetProject:
 #          Type: Api
 #          Properties:
