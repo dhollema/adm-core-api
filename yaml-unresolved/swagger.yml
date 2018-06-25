@@ -93,8 +93,8 @@ paths:
 #              type: "string"
 #            Access-Control-Allow-Origin:
 #              type: "string"
-        400:
-          description: Not Found
+#        400:
+#         description: Not Found
 #          headers:
 #            Access-Control-Allow-Headers:
 #              type: "string"
