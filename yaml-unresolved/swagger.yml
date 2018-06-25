@@ -78,7 +78,7 @@ paths:
       consumes: 
       - application/json
       produces:
-      - application/json; version
+      - application/json
       responses:
         200:
           description: OK
