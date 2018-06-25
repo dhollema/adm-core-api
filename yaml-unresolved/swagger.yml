@@ -87,21 +87,18 @@ paths:
             items:
               $ref: '#/definitions/Project'
           headers:
-            #Access-Control-Allow-Headers:
-            #  type: "string"
-            #Access-Control-Allow-Methods:
-            #  type: "string"
             Access-Control-Allow-Origin:
               type: "string"
-#        400:
-#         description: Not Found
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        500:
+          description: Internal Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
       x-amazon-apigateway-integration:
         httpMethod: post
         type: aws_proxy
@@ -109,11 +106,16 @@ paths:
           default:
             statusCode: 200
             responseParameters:
-              #method.response.header.Access-Control-Allow-Headers : "'*'"
-              #method.response.header.Access-Control-Allow-Methods : "'*'"
               method.response.header.Access-Control-Allow-Origin : "'*'"
-        uri: 
-          !Sub "arn:aws:apigateway:${AWS::Region}lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
+          "BAD.*":
+            statusCode: 400
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+          "INT.*":
+            statusCode: 500
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
 #    post:
 #      summary: Adds a new project.
 #      operationId: addProject
