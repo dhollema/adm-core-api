@@ -20,12 +20,12 @@ definitions:
     properties:
       type:
         type: string
-        example: Point
+        #example: Point
       coordinates:
         type: array
         minItems: 2
         maxItems: 2
-        example: [126.10, 53.47]
+        #example: [126.10, 53.47]
         items:
           type: number
   Project:
@@ -40,10 +40,10 @@ definitions:
       id:
         type: string
         format: uuid
-        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        #example: d290f1ee-6c54-4b01-90e6-d701748f0851
       name:
         type: string
-        example: Milo
+        #example: Milo
       type:
         type: string
         enum:
@@ -102,6 +102,11 @@ paths:
               type: "string"
             Access-Control-Allow-Origin:
               type: "string"
+      x-amazon-apigateway-integration:
+        httpMethod: post
+        type: aws_proxy
+        uri: 
+        responses: {}
     post:
       summary: Adds a new project.
       operationId: addProject
