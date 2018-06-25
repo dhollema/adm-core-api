@@ -274,6 +274,8 @@ paths:
       operationId: deleteProject
       tags:
       - Projects
+      consumes: 
+      - application/json
       produces:
       - application/json
       responses:
