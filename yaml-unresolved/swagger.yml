@@ -115,7 +115,9 @@ paths:
             statusCode: 500
             responseParameters:
               method.response.header.Access-Control-Allow-Origin : "'*'"
-        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
+        uri: 
+          Fn::Sub:
+            "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
 #    post:
 #      summary: Adds a new project.
 #      operationId: addProject
