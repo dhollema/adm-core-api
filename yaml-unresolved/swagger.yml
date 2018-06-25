@@ -183,141 +183,156 @@ paths:
               type: "string"
             Access-Control-Allow-Origin:
               type: "string"
-#  /projects/{projectId}:
-#    parameters:
-#      - in: path
-#        name: projectId
-#        description: ID of the project to get.
-#        type: string
-#        format: uuid
-#        required: true
-#    get:
-#      summary: Gets a project.
-#      operationId: getProject
-#      tags:
-#      - Projects
-#      produces:
-#      - application/json
-#      responses:
-#        200:
-#          description: OK
-#          schema:
-#            $ref: '#/definitions/Project'
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
-#        400:
-#          description: Not Found
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
-#    put:
-#      summary: Updates a project.
-#      operationId: updateProject
-#      tags:
-#      - Projects
-#      produces:
-#      - application/json
-#      parameters:
-#      - in: body
-#        name: project
-#        description: The project to update.
-#        schema:
-#          $ref: '#/definitions/Project'
-#      responses:
-#        200:
-#          description: OK
-#          schema:
-#            $ref: '#/definitions/Project'
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
-#        400:
-#          description: Not Found
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
-#    delete:
-#      summary: Deletes a project.
-#      operationId: deleteProject
-#      tags:
-#      - Projects
-#      produces:
-#      - application/json
-#      responses:
-#        200:
-#          description: OK
-#          schema:
-#            $ref: '#/definitions/Project'
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
-#        400:
-#          description: Not Found
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
-#    options:
-#      summary: CORS support
-#      description: |
-#        Enable CORS by returning correct headers
-#      consumes:
-#        - application/json
-#      produces:
-#        - application/json
-#      tags:
-#        - CORS
-#      x-amazon-apigateway-integration:
-#        type: mock
-#        requestTemplates:
-#          application/json: |
-#            {
-#              "statusCode" : 200
-#            }
-#        responses:
-#          "default":
-#            statusCode: "200"
-#            responseParameters:
-#              method.response.header.Access-Control-Allow-Headers : "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
-#              method.response.header.Access-Control-Allow-Methods : "'*'"
-#              method.response.header.Access-Control-Allow-Origin : "'*'"
-#            responseTemplates:
-#              application/json: |
-#                {}
-#      responses:
-#        200:
-#          description: Default response for CORS method
-#          headers:
-#            Access-Control-Allow-Headers:
-#              type: "string"
-#            Access-Control-Allow-Methods:
-#              type: "string"
-#            Access-Control-Allow-Origin:
-#              type: "string"
+  /projects/{projectId}:
+    parameters:
+      - in: path
+        name: projectId
+        description: ID of the project to get.
+        type: string
+        format: uuid
+        required: true
+    get:
+      summary: Gets a project.
+      operationId: getProject
+      tags:
+      - Projects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        httpMethod: post
+        type: aws_proxy
+        responses:
+          default:
+            statusCode: 200
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+          "BAD.*":
+            statusCode: 400
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
+    put:
+      summary: Updates a project.
+      operationId: updateProject
+      tags:
+      - Projects
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: project
+        description: The project to update.
+        schema:
+          $ref: '#/definitions/Project'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        httpMethod: post
+        type: aws_proxy
+        responses:
+          default:
+            statusCode: 200
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+          "BAD.*":
+            statusCode: 400
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
+    delete:
+      summary: Deletes a project.
+      operationId: deleteProject
+      tags:
+      - Projects
+      produces:
+      - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Project'
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+        400:
+          description: Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        httpMethod: post
+        type: aws_proxy
+        responses:
+          default:
+            statusCode: 200
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+          "BAD.*":
+            statusCode: 400
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:315927312703:function:adm-core-api-fn/invocations"
+    options:
+      summary: CORS support
+      description: |
+        Enable CORS by returning correct headers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - CORS
+      x-amazon-apigateway-integration:
+        type: mock
+        requestTemplates:
+          application/json: |
+            {
+              "statusCode" : 200
+            }
+        responses:
+          "default":
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Headers : "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+              method.response.header.Access-Control-Allow-Methods : "'*'"
+              method.response.header.Access-Control-Allow-Origin : "'*'"
+            responseTemplates:
+              application/json: |
+                {}
+      responses:
+        200:
+          description: Default response for CORS method
+          headers:
+            Access-Control-Allow-Headers:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Origin:
+              type: "string"
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 basePath: /dhollema/adm-core-api/1.0.0
