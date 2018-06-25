@@ -26,6 +26,7 @@ Resources:
       DefinitionUri: yaml-unresolved/swagger.yml
   ADMCoreApiFunction:
     Type: AWS::Serverless::Function
+    FunctionName: adm-core-api-fn
     Properties:
       Handler: index.handler
       Runtime: nodejs4.3
